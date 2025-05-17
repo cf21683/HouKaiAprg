@@ -28,7 +28,7 @@ public class PlayerGroundedState : PlayerState
 
     protected virtual void OnDashStarted(InputAction.CallbackContext context)
     {
-        playerController.SwitchState(PlayerStateList.Dash_Back);
+        playerController.SwitchState(PlayerStateList.Dash_Front);
     }
 
 

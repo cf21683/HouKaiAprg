@@ -56,7 +56,6 @@ public class PlayerState_Idle : PlayerGroundedState
         switch (characterModel.currentState)
         {
             case PlayerStateList.Idle:
-                #region 检测挂机
                 if (_idleTime > 3) 
                 {
                     //切换到挂机状态
@@ -64,10 +63,9 @@ public class PlayerState_Idle : PlayerGroundedState
                     playerController.SwitchState(PlayerStateList.Idle_AFK);
                     return;
                 }
-                #endregion
                 break;
             case PlayerStateList.Idle_AFK:
-                #region 检测挂机动画结束
+                
                 if (_state.Events(this, out var events))
                 {
                     events.OnEnd = () =>
@@ -75,10 +73,14 @@ public class PlayerState_Idle : PlayerGroundedState
                         playerController.SwitchState(PlayerStateList.Idle);
                     };
                 }
-                #endregion
                 break;
         }
 
+    }
+    
+    protected override void OnDashStarted(InputAction.CallbackContext context)
+    {
+        playerController.SwitchState(PlayerStateList.Dash_Back);
     }
 
     
