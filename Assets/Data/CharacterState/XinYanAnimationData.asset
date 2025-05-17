@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75f7d783af6f2d54391b0ce4661dddc9, type: 3}
+  m_Name: XinYanAnimationData
+  m_EditorClassIdentifier: 
+  idle:
+    _FadeDuration: 0.25
+    _Speed: 1
+    _Events:
+      _NormalizedTimes: []
+      _Callbacks: []
+      _Names: []
+    _Clip: {fileID: 7400000, guid: c5690acb8921123478a3fb7b3887d9e0, type: 2}
+    _NormalizedStartTime: NaN
+  idleAFK:
+    _FadeDuration: 0.25
+    _Speed: 1
+    _Events:
+      _NormalizedTimes: []
+      _Callbacks: []
+      _Names: []
+    _Clip: {fileID: 7400000, guid: a071daa42955cf64dad752e53503f8ea, type: 2}
+    _NormalizedStartTime: NaN
+  run:
+    _FadeDuration: 0.25
+    _Speed: 1
+    _Events:
+      _NormalizedTimes: []
+      _Callbacks: []
+      _Names: []
+    _Clip: {fileID: 7400000, guid: c1be5bc058d419f4890d22f85f2dbdf7, type: 2}
+    _NormalizedStartTime: NaN
+  jumpClip:
+    _FadeDuration: 0.25
+    _Speed: 1
+    _Events:
+      _NormalizedTimes: []
+      _Callbacks: []
+      _Names: []
+    _Clip: {fileID: 0}
+    _NormalizedStartTime: NaN
+  attack1:
+    _FadeDuration: 0.25
+    _Speed: 1
+    _Events:
+      _NormalizedTimes: []
+      _Callbacks: []
+      _Names: []
+    _Clip: {fileID: 7400000, guid: b32c43fc762689546939d65ae54258c5, type: 2}
+    _NormalizedStartTime: NaN
+  walk:
+    _FadeDuration: 0.25
+    _Speed: 1
+    _Events:
+      _NormalizedTimes: []
+      _Callbacks: []
+      _Names: []
+    _Clip: {fileID: 7400000, guid: c1bfaf5ec96bfe849ad155dfa84b8387, type: 2}
+    _NormalizedStartTime: NaN
+  dashFront:
+    _FadeDuration: 0.25
+    _Speed: 1
+    _Events:
+      _NormalizedTimes: []
+      _Callbacks: []
+      _Names: []
+    _Clip: {fileID: 7400000, guid: bad0f72fc32bf1e4eb9a035716d1f84d, type: 2}
+    _NormalizedStartTime: NaN
+  dashBack:
+    _FadeDuration: 0.25
+    _Speed: 1
+    _Events:
+      _NormalizedTimes: []
+      _Callbacks: []
+      _Names: []
+    _Clip: {fileID: 7400000, guid: f084141551b791347b542a05c24394c8, type: 2}
+    _NormalizedStartTime: NaN
+  references:
+    version: 2
+    RefIds: []
