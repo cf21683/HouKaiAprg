@@ -6,6 +6,7 @@ using System;
 public class PlayerController : SingleBase<PlayerController>,IStateMachineOwner
 {
     Vector3 _walk;
+    public float rotationSpeed = 8f;
     public PlayerInputActions playerInputActions { get; private set; }
     
     private float dashTimer = 1;
@@ -76,6 +77,12 @@ public class PlayerController : SingleBase<PlayerController>,IStateMachineOwner
                     }
                     stateMachine.EnterState<PlayerState_Dash>();
                     dashTimer = 0f;
+                    break;
+                case PlayerStateList.Sprint:
+                    stateMachine.EnterState<PlayerState_Sprint>();
+                    break;
+                case PlayerStateList.TurnBack:
+                    stateMachine.EnterState<PlayerState_TurnBack>();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(playerState), playerState, null);

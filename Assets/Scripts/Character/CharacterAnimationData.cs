@@ -13,6 +13,8 @@ public class CharacterAnimationData : ScriptableObject
     [SerializeField] ClipTransition walk;
     [SerializeField] ClipTransition dashFront;
     [SerializeField] ClipTransition dashBack;
+    [SerializeField] ClipTransition sprint;
+    [SerializeField] ClipTransition turnBack;
 
 
     public ClipTransition Idle => idle;
@@ -23,4 +25,6 @@ public class CharacterAnimationData : ScriptableObject
     public ClipTransition Walk => walk;
     public ClipTransition DashFront => dashFront;
     public ClipTransition DashBack => dashBack;
+    public ClipTransition Sprint => sprint;
+    public ClipTransition TurnBack => turnBack;
 }

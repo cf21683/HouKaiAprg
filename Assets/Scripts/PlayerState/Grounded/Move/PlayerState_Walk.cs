@@ -15,6 +15,7 @@ public class PlayerState_Walk : PlayerGroundedState
     public override void Update()
     {
         base.Update();
+        Rotation();
     }
 
     protected override void OnShouldWalkStarted(InputAction.CallbackContext context)

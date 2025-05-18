@@ -84,6 +84,24 @@ MonoBehaviour:
       _Names: []
     _Clip: {fileID: 7400000, guid: f084141551b791347b542a05c24394c8, type: 2}
     _NormalizedStartTime: NaN
+  sprint:
+    _FadeDuration: 0.25
+    _Speed: 1
+    _Events:
+      _NormalizedTimes: []
+      _Callbacks: []
+      _Names: []
+    _Clip: {fileID: 7400000, guid: c8d313980391bb34db4d26ac9add7590, type: 2}
+    _NormalizedStartTime: NaN
+  turnBack:
+    _FadeDuration: 0.25
+    _Speed: 1
+    _Events:
+      _NormalizedTimes: []
+      _Callbacks: []
+      _Names: []
+    _Clip: {fileID: 7400000, guid: 189b6f582ad23cf4f86ccc52e85fbbbe, type: 2}
+    _NormalizedStartTime: NaN
   references:
     version: 2
     RefIds: []

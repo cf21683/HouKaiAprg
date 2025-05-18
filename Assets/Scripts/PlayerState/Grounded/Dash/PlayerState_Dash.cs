@@ -23,17 +23,26 @@ public class PlayerState_Dash : PlayerGroundedState
         _dashState.NormalizedTime = 0f;
         if (_dashState.Events(this, out AnimancerEvent.Sequence events))
         {
-            events.Add(0.7f, DashMove);
+            events.Add(0.5f, DashMove);
         }
     }
     
 
     private void DashMove()
     {
-        
+        playerController.ReusableData.Move = playerController.playerInputActions.Character.Move.ReadValue<Vector2>();
             if (playerController.ReusableData.Move != Vector2.zero)
             {
-                Move();
+                switch (characterModel.currentState)
+                {
+                    case PlayerStateList.Dash_Front:
+                        playerController.SwitchState(PlayerStateList.Sprint);
+                        break;
+                    case PlayerStateList.Dash_Back:
+                        playerController.SwitchState(PlayerStateList.Run);
+                        break;
+                }
+                return;
             }
             else
             {
