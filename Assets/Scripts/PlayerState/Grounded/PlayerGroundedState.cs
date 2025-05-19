@@ -11,6 +11,7 @@ public class PlayerGroundedState : PlayerState
 
         playerController.playerInputActions.Character.Move.canceled += OnMoveCanceled;
         playerController.playerInputActions.Character.Dash.started += OnDashStarted;
+        playerController.playerInputActions.Character.Fire.started += OnFireStarted;
     }
 
 
@@ -19,6 +20,7 @@ public class PlayerGroundedState : PlayerState
         base.RemoveInputActionsCallbacks();
         playerController.playerInputActions.Character.Move.canceled -= OnMoveCanceled;
         playerController.playerInputActions.Character.Dash.started -= OnDashStarted;
+        playerController.playerInputActions.Character.Fire.started -= OnFireStarted;
     }
 
     protected virtual void OnMoveCanceled(InputAction.CallbackContext context)
@@ -46,5 +48,11 @@ public class PlayerGroundedState : PlayerState
     {
         
     }
-    
+
+    protected virtual void OnFireStarted(InputAction.CallbackContext context)
+    {
+        playerController.SwitchState(PlayerStateList.ComboAttack);
+    }
+
+
 }

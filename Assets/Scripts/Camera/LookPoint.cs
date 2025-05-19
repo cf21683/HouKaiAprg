@@ -13,7 +13,6 @@ public class LookPoint : MonoBehaviour
         
         target = playerObj.transform;
         
-           
         
     }
 

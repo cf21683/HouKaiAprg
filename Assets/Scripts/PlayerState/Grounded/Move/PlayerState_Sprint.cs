@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerState_Sprint : PlayerGroundedState
 {
@@ -16,12 +17,17 @@ public class PlayerState_Sprint : PlayerGroundedState
     {
         base.Update();
         
+        Rotation();
+        
+    }
+
+    protected override void Rotation()
+    {
         Vector3 movement = new Vector3(playerController.ReusableData.Move.x, 0f, playerController.ReusableData.Move.y);
         float cameraY = playerController.MainCamera.transform.rotation.eulerAngles.y;
         Vector3 rotate = Quaternion.Euler(0,cameraY,0) * movement;
         Quaternion targetRotation = Quaternion.LookRotation(rotate);
         float angle = Mathf.Abs(targetRotation.eulerAngles.y - playerController.characterModel.transform.eulerAngles.y);
-        Debug.Log("rotate :"+rotate);
         if (angle > 145f && angle < 215f && characterModel.currentState == PlayerStateList.Sprint)
         {
             playerController.SwitchState(PlayerStateList.TurnBack);
@@ -30,6 +36,11 @@ public class PlayerState_Sprint : PlayerGroundedState
             playerController.characterModel.transform.rotation = Quaternion.Slerp(playerController.characterModel.transform.rotation, targetRotation,
                 Time.deltaTime * playerController.rotationSpeed);
         }
-        
     }
+    
+    protected override void OnMoveCanceled(InputAction.CallbackContext context)
+    {
+        playerController.SwitchState(PlayerStateList.SprintEnd);
+    }
+    
 }

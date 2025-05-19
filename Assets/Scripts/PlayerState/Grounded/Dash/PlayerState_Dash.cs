@@ -10,7 +10,6 @@ public class PlayerState_Dash : PlayerGroundedState
     {
         base.Enter();
         
-        Debug.Log("播放dash");
         switch (characterModel.currentState)
         {
             case PlayerStateList.Dash_Front:

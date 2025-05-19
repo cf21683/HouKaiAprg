@@ -5,11 +5,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerState_Walk : PlayerGroundedState
 {
-
+    private AnimancerState _state;
      public override void Enter()
     {
         base.Enter();
-        playerController.Animancer.Play(playerController.CharacterAnimationData.Walk, 0.25f);
+        _state = playerController.Animancer.Play(playerController.CharacterAnimationData.Walk, 0.25f);
+        // _state.ApplyFootIK = true;
     }
 
     public override void Update()

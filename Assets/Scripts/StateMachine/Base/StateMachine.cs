@@ -72,15 +72,5 @@ public class StateMachine
         StateMachineManager.INSTANCE.RemoveFixedUpdateAction(currentState.FixedUpdate);
         StateMachineManager.INSTANCE.RemoveLateUpdateAction(currentState.LateUpdate);
     }
-
-
-    public void Clear()
-    {
-        ExitCurrentState();
-        currentState = null;
-        foreach (var state in stateDic.Values)
-            state.UnInit();
-
-        stateDic.Clear();
-    }
+    
 }

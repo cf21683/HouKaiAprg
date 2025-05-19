@@ -20,9 +20,7 @@ public class SingleBase<T> : MonoBehaviour where T : SingleBase<T>
         Destroy();         
     }
 
-    /// <summary>
-    /// 清除子类单例
-    /// </summary>
+
     public void Destroy()
     {
         INSTANCE = null;

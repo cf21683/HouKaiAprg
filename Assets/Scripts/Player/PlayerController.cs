@@ -16,8 +16,6 @@ public class PlayerController : SingleBase<PlayerController>,IStateMachineOwner
     
     public StateMachine StateMachine => stateMachine;
     public AnimancerComponent Animancer => animancer;
-    // [SerializeField] private PlayerSO data;
-    // public PlayerSO PlayerData => data;
 
     public Transform MainCamera {get; private set;}
 
@@ -37,7 +35,6 @@ public class PlayerController : SingleBase<PlayerController>,IStateMachineOwner
         characterAnimationData = characterModel.characterAnimationData;
 
         MainCamera = Camera.main.transform;
-        ReusableData.TimeToReachTargetRotation.y = 0.14f;
     }
 
     void Start()
@@ -57,9 +54,10 @@ public class PlayerController : SingleBase<PlayerController>,IStateMachineOwner
         {
             characterModel.currentState = playerState;
             switch (playerState)
-            {
+            {   
                 case PlayerStateList.Idle:
                 case PlayerStateList.Idle_AFK:
+                case PlayerStateList.CombatIdle:    
                     stateMachine.EnterState<PlayerState_Idle>(true);
                     break;
                 case PlayerStateList.Walk:
@@ -83,6 +81,12 @@ public class PlayerController : SingleBase<PlayerController>,IStateMachineOwner
                     break;
                 case PlayerStateList.TurnBack:
                     stateMachine.EnterState<PlayerState_TurnBack>();
+                    break;
+                case PlayerStateList.SprintEnd:
+                    stateMachine.EnterState<PlayerState_SprintEnd>();
+                    break;
+                case PlayerStateList.ComboAttack:
+                    stateMachine.EnterState<PlayerState_ComboAttack>(true);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(playerState), playerState, null);

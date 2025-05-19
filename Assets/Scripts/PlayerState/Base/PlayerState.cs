@@ -7,7 +7,7 @@
     public enum PlayerStateList
     {
         Idle, Idle_AFK,
-        Walk, Run,Dash_Front,Dash_Back,Sprint,TurnBack
+        Walk, Run,Dash_Front,Dash_Back,Sprint,TurnBack,SprintEnd,ComboAttack,CombatIdle
     }
     
     public class PlayerState : IState
@@ -27,6 +27,7 @@
             // Debug.Log("State: " + GetType().Name);
             //
             AddInputActionsCallbacks();
+            
         }
 
 
@@ -60,7 +61,7 @@
         {
         }
 
-        protected void Rotation()
+        protected virtual void Rotation()
         {
             Vector3 movement = new Vector3(playerController.ReusableData.Move.x, 0f, playerController.ReusableData.Move.y);
             float cameraY = playerController.MainCamera.transform.rotation.eulerAngles.y;
@@ -84,104 +85,7 @@
         }
         
         #endregion
-
-        #region  处理角色旋转
         
-        // protected void RotateTowardsTargetRotation()
-        // {
-        //     float currentYAngle = playerController.transform.eulerAngles.y;
-        //     if (currentYAngle == playerController.ReusableData.CurrentTargetRotation.y)
-        //         return;
-        //
-        //     float smoothYAngle = Mathf.SmoothDampAngle(currentYAngle,
-        //         playerController.ReusableData.CurrentTargetRotation.y,
-        //         ref playerController.ReusableData.DampedTargetRotationSpeed.y,
-        //         playerController.ReusableData.TimeToReachTargetRotation.y -
-        //         playerController.ReusableData.DampedTargetRoationPassTime.y);
-        //     playerController.ReusableData.DampedTargetRoationPassTime.y += Time.deltaTime;
-        //     Quaternion targetRotation = Quaternion.Euler(0f, smoothYAngle, 0f);
-        //     playerController.transform.rotation = targetRotation;
-        // }
-        //
-        //
-        // protected float UpdateTargetRotation(Vector3 direction, bool shouldConsiderCameraRotation = true)
-        // {
-        //     float directionAngle = GetDirectionAngle(direction);
-        //
-        //     if (shouldConsiderCameraRotation)
-        //     {
-        //         directionAngle = AddCameraRotationToAngle(directionAngle);
-        //     }
-        //
-        //     if (directionAngle != playerController.ReusableData.CurrentTargetRotation.y)
-        //     {
-        //         UpdateTargetRotationData(directionAngle);
-        //     }
-        //
-        //     return directionAngle;
-        // }
-        //
-        // protected Vector3 GetMovementDirection()
-        // {
-        //     return new Vector3(playerController.ReusableData.Move.x, 0f, playerController.ReusableData.Move.y);
-        // }
-        //
-        // private float Rotate(Vector3 direction)
-        // {
-        //     float directionAngle = UpdateTargetRotation(direction);
-        //
-        //     RotateTowardsTargetRotation();
-        //     // Debug.Log("Target rotation angle: " + directionAngle);
-        //
-        //     return directionAngle;
-        // }
-        //
-        // private void UpdateTargetRotationData(float targetAngle)
-        // {
-        //     playerController.ReusableData.CurrentTargetRotation.y = targetAngle;
-        //
-        //     playerController.ReusableData.DampedTargetRoationPassTime.y = 0f;
-        // }
-        //
-        // private float AddCameraRotationToAngle(float angle)
-        // {
-        //     angle += playerController.MainCamera.eulerAngles.y;
-        //
-        //     if (angle > 360)
-        //     {
-        //         angle -= 360f;
-        //     }
-        //
-        //     return angle;
-        // }
-        //
-        // private float GetDirectionAngle(Vector3 direction)
-        // {
-        //     float directionAngle = MathF.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-        //
-        //     if (directionAngle < 0)
-        //     {
-        //         directionAngle += 360f;
-        //     }
-        //
-        //     return directionAngle;
-        //
-        //
-        // }
-        //
-        // protected void Rotation()
-        // {
-        //     if (playerController.ReusableData.Move == Vector2.zero)
-        //     {
-        //         return;
-        //     }
-        //
-        //     Vector3 movementDirection = GetMovementDirection();
-        //
-        //     Rotate(movementDirection);
-        //
-        // }
-        #endregion
 
         #region 按键响应方法
         protected virtual void OnShouldWalkStarted(InputAction.CallbackContext context)

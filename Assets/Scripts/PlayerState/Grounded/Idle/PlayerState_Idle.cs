@@ -12,7 +12,7 @@ public class PlayerState_Idle : PlayerGroundedState
     {
         base.Enter();
         _idleTime = 0f;
-
+        playerController.ReusableData.ComboNumber = 1;
         switch (characterModel.currentState)
         {
             case PlayerStateList.Idle:
@@ -20,6 +20,9 @@ public class PlayerState_Idle : PlayerGroundedState
                 break;
             case PlayerStateList.Idle_AFK:
                 _state = playerController.Animancer.Play(playerController.CharacterAnimationData.IdleAFK, 0.25f);
+                break;
+            case PlayerStateList.CombatIdle:
+                _state = playerController.Animancer.Play(playerController.CharacterAnimationData.CombatIdle, 0.5f);
                 break;
         }
         
